@@ -25,6 +25,6 @@ p_item removeFirstByValue(p_list lista, int value);
 void removeLastByValue(p_list lista, int value);
 void removeAllByValue(p_list lista, int value);
 p_list extractFromListByValues(int* values);
-void removeRepetitions();
-
+void removeRepetitions(p_list list);
+p_list merge(p_list L, p_list R);
 #endif

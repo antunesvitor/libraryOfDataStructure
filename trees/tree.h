@@ -32,6 +32,7 @@ p_tree toSearchingTree(p_tree);
 void rightRotate(p_tree,p_node);
 void leftRotate(p_tree,p_node);
 void fixTree(p_tree);
+boolean isAVL(p_tree);
 void printTree(p_tree);
 
 #endif

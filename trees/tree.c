@@ -55,7 +55,7 @@ p_node newNode(int value)
 
 void insertOnHeap(p_tree t, p_node node)
 {   
-    return;
+
 }
 void insertOnBST(p_tree t, p_node node)
 {
@@ -145,5 +145,13 @@ void printTree(p_tree t)
     {
         printf("The tree is not valid.\n");
     }
+}
 
+boolean isLeaf(p_node node)
+{
+    if(node->left == NULL && node->right == NULL)
+    {
+        return true;
+    }
+    else return false;
 }

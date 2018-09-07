@@ -3,6 +3,24 @@
 #include "tree.h"
 #define count 5
 
+
+int  max(int a, int b)
+{
+    if(a > b){
+        return a;
+    }
+    else return b;
+}
+
+int getHeight(p_node node)
+{
+    if (node == NULL)
+    {
+        return -1;
+    }
+    return 1 + max(getHeight(node->right), getHeight(node->left));
+}
+
 p_tree newBST()
 {
     p_tree T = malloc(sizeof(struct tree));
@@ -14,27 +32,7 @@ p_tree newBST()
 
     T->root = NULL;
     T->height = 0;
-    T->searchingTree = true;
-    T->heap = false;
     printf("BST successfully created!\n");
-    return T;
-}
-
-
-p_tree newHeap()
-{
-    p_tree T = malloc(sizeof(struct tree));
-    if (T == NULL)
-    {
-        fprintf(stderr, "It was not possible to allocate memory.");
-        return NULL;
-    }
-
-    T->root = NULL;
-    T->height = 0;
-    T->searchingTree = false;
-    T->heap = true;
-    printf("Heap successfully created!\n");
     return T;
 }
 
@@ -53,11 +51,7 @@ p_node newNode(int value)
     return node;
 }
 
-void insertOnHeap(p_tree t, p_node node)
-{   
-
-}
-void insertOnBST(p_tree t, p_node node)
+void insertTree(p_tree t, p_node node)
 {
     p_node aux, ant;
     if(t->root == NULL)
@@ -87,22 +81,7 @@ void insertOnBST(p_tree t, p_node node)
         ant->right = node;
     }
     node->parent = ant;
-    return;
-}
-
-void insertTree(p_tree t, p_node node)
-{
-    if(t->searchingTree == 1)
-    {
-        insertOnBST(t,node);
-        return;
-    }
-    else if(t->heap == 1)
-    {
-        insertOnHeap(t,node);
-        return;
-    }
-    else fprintf(stdout, "Tree is not valid.\n error on %d", node->value);
+    t->height = getHeight(t->root);
     return;
 }
 
@@ -147,11 +126,3 @@ void printTree(p_tree t)
     }
 }
 
-boolean isLeaf(p_node node)
-{
-    if(node->left == NULL && node->right == NULL)
-    {
-        return true;
-    }
-    else return false;
-}

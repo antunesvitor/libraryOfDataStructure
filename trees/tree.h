@@ -13,17 +13,13 @@ struct node {
     p_node left;
 };
 
-
 typedef struct tree* p_tree;
 struct tree{
     p_node root;
     int height;
-    boolean heap;
-    boolean searchingTree;
 };
 
 p_tree newBST();
-p_tree newHeap();
 p_node newNode(int value);
 boolean isLeaf(p_node);
 void insertTree(p_tree, p_node);

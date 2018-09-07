@@ -21,7 +21,6 @@ int main(int argc, char const *argv[])
 
 
     p_tree myTree = newBST();
-    p_tree myHeap = newHeap();
     insertTree(myTree, newNode(5));
     insertTree(myTree, newNode(7));
     insertTree(myTree, newNode(3));

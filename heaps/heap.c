@@ -61,7 +61,8 @@ void swap(int *a, int *b)
 }
 
 /*returns the index of a parent of a given index*/ 
-int parent(int index) { return (index-1)/2;}
+int parent(int index) 
+{ return (index-1)/2;}
 
 /*returns the index of a right element of a given index*/
 int right(int index) { return 2*index + 2; }
@@ -74,7 +75,6 @@ void insert(p_heap heap, int value)
 {
     if(heap->capacity == heap->size)
     {
-        printf("Aqui o heap se expande\n");
         increaseCapacity(heap);
     }
 
@@ -98,4 +98,58 @@ void insert(p_heap heap, int value)
            i = parent(i);
        }
     }
+}
+
+boolean checkNodeMin(p_heap heap,int index)
+{
+    if(right(index) < heap->size)
+    {
+        if(heap->arr[right(index)] < heap->arr[index]) return false;
+    }
+    if(left(index) < heap->size)
+    {
+        if(heap->arr[left(index)] < heap->arr[index]) return false;
+    }
+    if(right(index) > heap->size && left(index) > heap->size)
+    {
+        return true;
+    }
+    return (checkNodeMin( heap, right(index)) && checkNodeMin( heap, left(index)));
+}
+
+boolean checkNodeMax(p_heap heap,int index)
+{
+    if(right(index) < heap->size)
+    {
+        if(heap->arr[right(index)] > heap->arr[index]) return false;
+    }
+    if(left(index) < heap->size)
+    {
+        if(heap->arr[left(index)] > heap->arr[index]) return false;
+    }
+    if(right(index) > heap->size && left(index) > heap->size)
+    {
+        return true;
+    }
+    return (checkNodeMax( heap, right(index)) && checkNodeMax( heap, left(index)));
+}
+
+boolean isMinHeap(p_heap heap)
+{
+    return checkNodeMin(heap, 0);
+}
+
+boolean isMaxHeap(p_heap heap)
+{
+    return checkNodeMax(heap, 0);
+}
+
+p_heap heapfyArrayToMaxHeap(int* arr)
+{
+    return null;
+}
+
+p_heap heapfyArrayToMinHeap(int* arr)
+{
+    return null;
 }

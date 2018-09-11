@@ -19,5 +19,9 @@ void insert(p_heap, int);
 int left(int);
 int right(int); 
 void swap(int*,int*);
+boolean isMinHeap(p_heap);
+boolean isMaxHeap(p_heap);
+p_heap heapfyArrayToMaxHeap(int*);
+p_heap heapfyArrayToMinHeap(int*);
 
 #endif

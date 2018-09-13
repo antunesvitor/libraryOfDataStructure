@@ -23,5 +23,9 @@ boolean isMinHeap(p_heap);
 boolean isMaxHeap(p_heap);
 p_heap heapfyArrayToMaxHeap(int*);
 p_heap heapfyArrayToMinHeap(int*);
-
+void deleteFrom(p_heap, int);
+boolean isLeaf(p_heap, int);
+int minIndex(p_heap, int);
+int maxIndex(p_heap, int);
+void fixHeap(p_heap, int);
 #endif

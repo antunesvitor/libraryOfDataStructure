@@ -16,13 +16,13 @@ int main(int argc, char const *argv[])
     insert(minHeap, 9);
 
     p_heap maxHeap = newMaxHeap(5);
-    insert(maxHeap, 8);
-    insert(maxHeap, 11);
-    insert(maxHeap, 12);
-    insert(maxHeap, 14);
-    insert(maxHeap, 15);
     insert(maxHeap, 16);
+    insert(maxHeap, 10);
+    insert(maxHeap, 15);
+    insert(maxHeap, 8);
     insert(maxHeap, 9);
+    insert(maxHeap, 12);
+    insert(maxHeap, 13);
 
     printf("for minHeap:\n");
     for(i = 0; i < minHeap->size; i++)
@@ -30,8 +30,6 @@ int main(int argc, char const *argv[])
         printf("%d ", minHeap->arr[i]);
     }
     printf("\n");
-    if(isMinHeap(minHeap)) printf("it is a minimum heap\n");
-    if(!isMaxHeap(minHeap)) printf("it isnt a max heap\n");
 
     printf("\n\nfor maxHeap:\n");
     for(i = 0; i < maxHeap->size; i++)
@@ -39,7 +37,17 @@ int main(int argc, char const *argv[])
         printf("%d ", maxHeap->arr[i]);
     }
     printf("\n");
-    if(!isMinHeap(maxHeap)) printf("it isnt a minimum heap\n");
-    if(isMaxHeap(maxHeap)) printf("it is a max heap\n");
+
+    deleteFrom(maxHeap, 4);
+    for(i = 0; i < maxHeap->size; i++)
+    {
+        printf("%d ", maxHeap->arr[i]);
+    }
+    printf("\n");
+    deleteFrom(minHeap, 0);
+    for(i = 0; i < minHeap->size; i++)
+    {
+        printf("%d ", minHeap->arr[i]);
+    }
     return 0;
 }
